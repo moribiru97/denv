@@ -1,0 +1,41 @@
+# su の後はユーザ名のみマッチする
+# ssh の直後はユーザ名 or ホスト名、ユーザ名@に続いてはホスト名のみがマッチ(候補ホスト名の登録はまた後々)
+# make の後は Makefile に記述されたターゲット名(install など)
+# make --PREFIX= などの = の後のフルパス名マッチ
+# jobs, fg, bg でのジョブ名マッチ
+# kill の後のプロセス ID マッチ
+# scp のリモートホスト側で、相手のファイルパスをマッチさせる
+# 第1要素が大文字から始まる場合は環境変数にマッチ
+# 代表的なコマンドでは 「-」 や 「--」 の後に使用可能なオプションがマッチ
+# $の後はシェル変数／環境変数がマッチ(compinit しなくてもできますが)
+# - 動的補完 : w3m, gcc 等に応じたファイルのみが補完される
+autoload -U compinit
+compinit -u
+#compinit
+
+# 補完の時に大文字小文字を区別しない (但し、大文字を打った場合は小文字に変換しない)
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+#---- 色 ---------------#
+autoload colors
+colors
+PROMPT=$'%{\e[38;5;202m%}%n %~%(!.#.$)%{\e[m%} '
+PROMPT2="%{$fg[green]%}%_> %{$reset_color%}"
+SPROMPT="%{$fg[red]%}correct: %R -> %r [nyae]? %{$reset_color%}"
+#RPROMPT="%{$fg[cyan]%}[%~]%{$reset_color%}"
+
+#rbenv用
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init - zsh)"
+
+#plenv用
+export PLENV_ROOT="$HOME/.plenv"
+export PATH="$HOME/.plenv/bin:$PATH"
+eval "$(plenv init - zsh)"
+
+#ls
+alias l="ls -lG"
+alias la="ls -alG"
+export LSCOLORS=gxfxcxdxcxegedabagacad
+#export LSCOLORS=gxfxcxdxbxegedabagacad
+#alias

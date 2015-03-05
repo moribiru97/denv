@@ -1,0 +1,84 @@
+"------------ 全般 -----------------------
+syntax enable
+set hlsearch
+
+autocmd BufNewFile,BufRead *.psgi   set filetype=perl
+autocmd BufNewFile,BufRead *.t      set filetype=perl
+
+"--------------------------------------------------------------------------
+" Plugin
+call pathogen#infect()
+
+" neobundle
+set nocompatible               " Be iMproved
+filetype off                   " Required!
+
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#begin(expand('~/.vim/bundle/'))
+NeoBundle 'petdance/vim-perl'
+NeoBundle 'hotchpotch/perldoc-vim'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'thinca/vim-quickrun'
+call neobundle#end()
+
+filetype plugin indent on     " Required!
+
+" Installation check.
+if neobundle#exists_not_installed_bundles()
+  echomsg 'Not installed bundles : ' .
+        \ string(neobundle#get_not_installed_bundle_names())
+  echomsg 'Please execute ":NeoBundleInstall" command.'
+  "finish
+endif
+
+"---------- For neocomplcache -----------------"
+" 色？
+hi Pmenu ctermbg=5
+hi PmenuSel ctermbg=1
+hi PMenuSbar ctermbg=5
+
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplcache.
+let g:neocomplcache_enable_at_startup = 1
+" Use underbar completion.
+let g:neocomplcache_enable_underbar_completion = 1
+" Set minimum syntax keyword length.
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+ " Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+" Use camel case completion.
+"let g:neocomplcache_enable_camel_case_completion = 1
+" Select with <TAB>
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+
+let g:neocomplcache_ctags_arguments_list = {
+  \ 'perl' : '-R -h ".pm"'
+  \ }
+
+let g:neocomplcache_dictionary_filetype_lists = {
+    \ 'default'    : '',
+    \ 'perl'       : $HOME . '/.vim/dict/perl.dict'
+    \ }
+
+" Define keyword.
+if !exists('g:neocomplcache_keyword_patterns')
+  let g:neocomplcache_keyword_patterns = {}
+endif
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+inoremap <expr><C-g>     neocomplcache#undo_completion()
+inoremap <expr><C-l>     neocomplcache#complete_common_string()
+nmap <Leader>r <plug>(quickrun)
+inoremap <C-d> $
+inoremap <C-a> @
