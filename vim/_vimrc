@@ -41,6 +41,8 @@ endif
 hi Pmenu ctermbg=5
 hi PmenuSel ctermbg=1
 hi PMenuSbar ctermbg=5
+hi Search ctermbg=0 guibg=Black
+
 
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
