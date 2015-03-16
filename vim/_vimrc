@@ -1,9 +1,17 @@
 "------------ 全般 -----------------------
 syntax enable
 set hlsearch
+" 削除できない時の対策
+set backspace=indent,eol,start
+set tabstop=4
+set autoindent
+set expandtab
+set shiftwidth=4
+"set number
 
 autocmd BufNewFile,BufRead *.psgi   set filetype=perl
 autocmd BufNewFile,BufRead *.t      set filetype=perl
+autocmd ColorScheme * highlight Constant term=underline ctermfg=6 guifg=DarkCyan
 
 "--------------------------------------------------------------------------
 " Plugin
@@ -24,6 +32,7 @@ NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'szw/vim-tags'
 call neobundle#end()
 
 filetype plugin indent on     " Required!

@@ -60,102 +60,102 @@
 #
 # Tested under SunOS 5.7 with Perl 5.6.0.  Let me know if it's not working for
 # you.
-use strict;
-use Getopt::Std;
-use Cwd qw(getcwd);
-use Path::Class qw(file);
-use Project::Libs;
-
-use vars qw/$opt_c $opt_f $opt_h/; # needed for Getopt in combination with use strict 'vars'
-
-use constant VERSION => 0.2;
-
-getopts('cf:h');
-
-&usage if $opt_h; # not necessarily needed, but good for further extension
-
-if (defined $opt_f) {
-
-    open FILE, "> $opt_f" or do {
-	warn "Couldn't open $opt_f: $!.  Using STDOUT instead.\n";
-	undef $opt_f;
-    };
-
-};
-
-my $handle = (defined $opt_f ? \*FILE : \*STDOUT);
-
-(my $file = shift) or &usage; # display usage if no filename is supplied
-my $args = (@ARGV ? ' ' . join ' ', @ARGV : '');
-
-my $path = "";
-my $current_dir = getcwd;
-my @inc = Project::Libs::find_inc(file($file)->dir->stringify, [qw(lib)], ());
-$path .= join ' ', map {"-I$_"} @inc if scalar @inc;
-chdir $current_dir;
-
-my @lines = `perl @{[defined $opt_c ? '-c ' : '' ]} -w $path "$file$args" 2>&1`;
-
-my $errors = 0;
-foreach my $line (@lines) {
-
-    chomp($line);
-    my ($file, $lineno, $message, $rest);
-
-    if ($line =~ /^(.*)\sat\s(.*)\sline\s(\d+)(\.|,\snear\s\".*\")$/) {
-
-	($message, $file, $lineno, $rest) = ($1, $2, $3, $4);
-	$errors++;
-	$message .= $rest if ($rest =~ s/^,//);
-	print $handle "$file:$lineno:$message\n";
-
-    } else { next };
-
-}
-
-if (defined $opt_f) {
-
-    my $msg;
-    if ($errors == 1) {
-
-	$msg = "There was 1 error.\n";
-
-    } else {
-
-	$msg = "There were $errors errors.\n";
-
-    };
-
-    print STDOUT $msg;
-    close FILE;
-    unlink $opt_f unless $errors;
-
-};
-
-sub usage {
-
-    (local $0 = $0) =~ s/^.*\/([^\/]+)$/$1/; # remove path from name of program
-    print<<EOT;
-Usage:
-	$0 [-c] [-f <errorfile>] <programfile> [programargs]
-
-		-c	compile only, don't run (executes 'perl -wc')
-		-f	write errors to <errorfile>
-
-Examples:
-	* At the command line:
-		$0 program.pl
-		Displays output on STDOUT.
-
-		$0 -c -f errorfile program.pl
-		Then run 'vim -q errorfile' to edit the errors with Vim.
-
-	* In Vim:
-		Edit in Vim (and save, if you don't have autowrite on), then
-		type ':mak' or ':mak args' (args being the program arguments)
-		to error check.
-EOT
-
-    exit 0;
-
-};
+#use strict;
+#use Getopt::Std;
+#use Cwd qw(getcwd);
+#use Path::Class qw(file);
+#use Project::Libs;
+#
+#use vars qw/$opt_c $opt_f $opt_h/; # needed for Getopt in combination with use strict 'vars'
+#
+#use constant VERSION => 0.2;
+#
+#getopts('cf:h');
+#
+#&usage if $opt_h; # not necessarily needed, but good for further extension
+#
+#if (defined $opt_f) {
+#
+#    open FILE, "> $opt_f" or do {
+#	warn "Couldn't open $opt_f: $!.  Using STDOUT instead.\n";
+#	undef $opt_f;
+#    };
+#
+#};
+#
+#my $handle = (defined $opt_f ? \*FILE : \*STDOUT);
+#
+#(my $file = shift) or &usage; # display usage if no filename is supplied
+#my $args = (@ARGV ? ' ' . join ' ', @ARGV : '');
+#
+#my $path = "";
+#my $current_dir = getcwd;
+#my @inc = Project::Libs::find_inc(file($file)->dir->stringify, [qw(lib)], ());
+#$path .= join ' ', map {"-I$_"} @inc if scalar @inc;
+#chdir $current_dir;
+#
+#my @lines = `perl @{[defined $opt_c ? '-c ' : '' ]} -w $path "$file$args" 2>&1`;
+#
+#my $errors = 0;
+#foreach my $line (@lines) {
+#
+#    chomp($line);
+#    my ($file, $lineno, $message, $rest);
+#
+#    if ($line =~ /^(.*)\sat\s(.*)\sline\s(\d+)(\.|,\snear\s\".*\")$/) {
+#
+#	($message, $file, $lineno, $rest) = ($1, $2, $3, $4);
+#	$errors++;
+#	$message .= $rest if ($rest =~ s/^,//);
+#	print $handle "$file:$lineno:$message\n";
+#
+#    } else { next };
+#
+#}
+#
+#if (defined $opt_f) {
+#
+#    my $msg;
+#    if ($errors == 1) {
+#
+#	$msg = "There was 1 error.\n";
+#
+#    } else {
+#
+#	$msg = "There were $errors errors.\n";
+#
+#    };
+#
+#    print STDOUT $msg;
+#    close FILE;
+#    unlink $opt_f unless $errors;
+#
+#};
+#
+#sub usage {
+#
+#    (local $0 = $0) =~ s/^.*\/([^\/]+)$/$1/; # remove path from name of program
+#    print<<EOT;
+#Usage:
+#	$0 [-c] [-f <errorfile>] <programfile> [programargs]
+#
+#		-c	compile only, don't run (executes 'perl -wc')
+#		-f	write errors to <errorfile>
+#
+#Examples:
+#	* At the command line:
+#		$0 program.pl
+#		Displays output on STDOUT.
+#
+#		$0 -c -f errorfile program.pl
+#		Then run 'vim -q errorfile' to edit the errors with Vim.
+#
+#	* In Vim:
+#		Edit in Vim (and save, if you don't have autowrite on), then
+#		type ':mak' or ':mak args' (args being the program arguments)
+#		to error check.
+#EOT
+#
+#    exit 0;
+#
+#};
