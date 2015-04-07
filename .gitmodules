@@ -1,0 +1,30 @@
+[submodule "vim/_vim/bundle/errormarker.vim"]
+	path = vim/_vim/bundle/errormarker.vim
+	url = git://github.com/mh21/errormarker.vim
+[submodule "vim/_vim/bundle/neobundle.vim"]
+	path = vim/_vim/bundle/neobundle.vim
+	url = git://github.com/Shougo/neobundle.vim
+[submodule "vim/_vim/bundle/neocomplcache"]
+	path = vim/_vim/bundle/neocomplcache
+	url = https://github.com/Shougo/neocomplcache.git
+[submodule "vim/_vim/bundle/neosnippet"]
+	path = vim/_vim/bundle/neosnippet
+	url = https://github.com/Shougo/neosnippet.git
+[submodule "vim/_vim/bundle/neosnippet-snippets"]
+	path = vim/_vim/bundle/neosnippet-snippets
+	url = https://github.com/Shougo/neosnippet-snippets.git
+[submodule "vim/_vim/bundle/nerdtree"]
+	path = vim/_vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "vim/_vim/bundle/perldoc-vim"]
+	path = vim/_vim/bundle/perldoc-vim
+	url = https://github.com/hotchpotch/perldoc-vim.git
+[submodule "vim/_vim/bundle/vim-perl"]
+	path = vim/_vim/bundle/vim-perl
+	url = https://github.com/petdance/vim-perl.git
+[submodule "vim/_vim/bundle/vim-quickrun"]
+	path = vim/_vim/bundle/vim-quickrun
+	url = https://github.com/thinca/vim-quickrun.git
+[submodule "vim/_vim/bundle/vim-tags"]
+	path = vim/_vim/bundle/vim-tags
+	url = https://github.com/szw/vim-tags.git
