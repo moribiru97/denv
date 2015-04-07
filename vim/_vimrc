@@ -33,6 +33,7 @@ NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'szw/vim-tags'
+NeoBundle 'scrooloose/nerdtree'
 call neobundle#end()
 
 filetype plugin indent on     " Required!
@@ -93,3 +94,4 @@ inoremap <expr><C-l>     neocomplcache#complete_common_string()
 nmap <Leader>r <plug>(quickrun)
 inoremap <C-d> $
 inoremap <C-a> @
+nnoremap <silent><C-e> :NERDTreeToggle<CR>

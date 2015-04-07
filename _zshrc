@@ -52,6 +52,7 @@ export LSCOLORS=gxfxcxdxcxegedabagacad
 #alias
 alias virc="vi ~/github/denv/_zshrc"
 alias vivrc="vi ~/github/denv/vim/_vimrc"
+alias findf="find . -type f | xargs grep"
 
 #chromeのスマフォua
 alias chrome_nexus='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-agent="Mozilla/5.0 (Linux; Android 4.4.2; Nexus 4 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.122 Mobile Safari/537.36" --user-data-dir=/tmp/nexus4chrome';

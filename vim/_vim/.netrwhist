@@ -1,8 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/yusuke.mori/vagrant/centos6.3_1/brahman/lib/Brahman/Constants/Error'
-let g:netrw_dirhist_2='/Users/yusuke.mori/.ssh'
-let g:netrw_dirhist_3='/Users/yusuke.mori/vagrant/centos6.3_1/brahman/t/controller/core/upgrade/standard'
-let g:netrw_dirhist_4='/Users/yusuke.mori/vagrant/centos6.3_1/brahman/tmpl/mobage/connect'
-let g:netrw_dirhist_5='/Users/yusuke.mori/vagrant/centos6.3_1/brahman/schema/connect/1.0'
-let g:netrw_dirhist_6='/Users/yusuke.mori/vagrant/centos6.3_1/brahman/schema/connect/1.0/endpoints'
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/Users/yusuke.mori/vagrant/centos6.3_1/brahman/lib/Brahman/Model/DataSource/User/Mobage'
+let g:netrw_dirhist_2='/Users/yusuke.mori/vagrant/centos6.3_1/brahman/lib/Brahman/Web/Controller/Core/FederatedLogin'
+let g:netrw_dirhist_3='/Users/yusuke.mori/vagrant/centos6.3_1/brahman/root/static/js/connect'
+let g:netrw_dirhist_4='/Users/yusuke.mori/vagrant/centos6.3_1/brahman/root/static/js/connect/pages'
+let g:netrw_dirhist_5='/Users/yusuke.mori/vagrant/centos6.3_1/brahman/lib/Brahman/Util'
+let g:netrw_dirhist_6='/Users/yusuke.mori/vagrant/centos6.3_1/brahman/lib/Brahman/Model/DataSource/User/Mobage'
+let g:netrw_dirhist_7='/Users/yusuke.mori/vagrant/centos6.3_1/brahman/lib/Brahman/Web/Filter/Request'
+let g:netrw_dirhist_8='/Users/yusuke.mori/vagrant/savitr_srv/savitr/lib/Savitr/Web/Filter/Request'
