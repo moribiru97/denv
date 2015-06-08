@@ -57,3 +57,10 @@ alias findf="find . -type f | xargs grep"
 #chromeのスマフォua
 alias chrome_nexus='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --user-agent="Mozilla/5.0 (Linux; Android 4.4.2; Nexus 4 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.1916.122 Mobile Safari/537.36" --user-data-dir=/tmp/nexus4chrome';
 
+
+###業務関係
+alias jssdk_build_in='grunt build:jp_dev_service --force'
+alias jssdk_build='cur=`pwd`;cd ~/vagrant/centos6.3_1/jssdk;jssdk_build_in;cd $cur;'
+
+#gist
+export GISTY_DIR=$HOME/github/gisty
