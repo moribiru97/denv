@@ -65,6 +65,3 @@ alias jssdk_build='cur=`pwd`;cd ~/vagrant/centos6.3_1/jssdk;jssdk_build_in;cd $c
 #gist
 export GISTY_DIR=$HOME/github/gisty
 
-#gateway ssh
-alias gw="ssh -A gateway1.dena.local"
-alias gw2="ssh -A gateway2.dena.local"
